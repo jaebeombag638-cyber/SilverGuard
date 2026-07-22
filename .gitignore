@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+
+# 대용량 원본/재현용 데이터 (build_dataset.py로 재생성 가능)
+data/tranco_tmp/
+data/benign_paths_raw.csv

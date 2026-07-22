@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://raw.githubusercontent.com/faizann24/Using-machine-learning-to-detect-malicious-URLs/master/data/data.csv --max-time 15)",
+      "Bash(mkdir -p /c/SilverGuard/data)",
+      "Bash(curl -sL -o /c/SilverGuard/data/benign_paths_raw.csv \"https://raw.githubusercontent.com/faizann24/Using-machine-learning-to-detect-malicious-URLs/master/data/data.csv\" --max-time 30)",
+      "Bash(awk -F, '{print $NF}')",
+      "Bash(grep ',good$' /c/SilverGuard/data/benign_paths_raw.csv)",
+      "Bash(awk -F',' '{print length\\($1\\), $1}')",
+      "Bash(curl -sL -o /c/SilverGuard/data/tranco_top1m.csv.zip \"https://tranco-list.eu/top-1m.csv.zip\" --max-time 60)",
+      "Bash(unzip -o tranco_top1m.csv.zip -d tranco_tmp)",
+      "Bash(python build_dataset.py)",
+      "Bash(awk -F',' '{print $2}')",
+      "Bash(python -c \"import pandas, numpy; print\\('pandas', pandas.__version__\\); print\\('numpy', numpy.__version__\\)\")",
+      "Bash(python check_leakage.py)",
+      "Bash(python -c ' *)",
+      "Bash(python extract_features.py)",
+      "Bash(python -c \"import sklearn; print\\('sklearn', sklearn.__version__\\)\")",
+      "Bash(python -c \"import xgboost; print\\('xgboost', xgboost.__version__\\)\")",
+      "Bash(pip install *)",
+      "Bash(python train_baseline.py)",
+      "Bash(python -c \"import sys; print\\(sys.executable\\)\")",
+      "Bash(pip -V)",
+      "Bash(python -m pip install xgboost)",
+      "Bash(python -c \"import torch; print\\(torch.__version__\\); print\\('cuda available:', torch.cuda.is_available\\(\\)\\)\")"
+    ]
+  }
+}
